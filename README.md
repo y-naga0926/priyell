@@ -1,24 +1,73 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column               | Type                | Options                   |
+|----------------------|---------------------|---------------------------|
+| nickname             | string              | null: false               |
+| email                | string              | null: false, unique: true |
+| encrypted_password   | string              | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items dependent: :destroy
+- has_many :purchases dependent: :destroy
 
-* Configuration
 
-* Database creation
+## pregnancy_week table
 
-* Database initialization
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+| baby_birthday                       | string     | null: false                    |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
 
-* ...
+### Association
+
+
+
+
+## exam_schedule table
+
+| Column                              | Type       | Options                        |
+|-------------------------------------|------------|--------------------------------|
+|                                     | string     | null:false                     |
+|                                     | integer    | null: false                    |
+|                                     | text       | null: false                    |
+|                                     | integer    | null: false                    |
+|                                     | integer    | null: false                    |
+|                                     | integer    | null: false                    |
+|                                     | integer    | null: false                    |
+|                                     | references | null: false, foreign_key: true |
+|                                     | integer    | null: false                    |
+
+### Association
+
+
+
+## question table
+
+| Column                        | Type       | Options                        |
+|-------------------------------|------------|--------------------------------|
+| title                         | string     | null: false, foreign_key: true |
+| question_form                 | text       | null: false, foreign_key: true |
+
+### Association
+
+
+## reservation table
+
+| Column                        | Type       | Options                        |
+|-------------------------------|------------|--------------------------------|
+| family_name                   | string     | null: false, foreign_key: true |
+| first_name                    | string     | null: false, foreign_key: true |
+| family_name_kana              | string     | null: false, foreign_key: true |
+| first_name_kana               | string     | null: false, foreign_key: true |
+| first_name                    | string     | null: false, foreign_key: true |
+| exam_day                      | string     |                                |
+
+### Association
+
+
+
